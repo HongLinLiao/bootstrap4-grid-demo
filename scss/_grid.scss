@@ -1,0 +1,32 @@
+.container {
+  max-width: 1140px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $grid-gutter-width; // gutter on outside
+  padding-right: $grid-gutter-width; // gutter on outside
+  background-color: lightblue;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -($grid-gutter-width/2); // remove first and last element outside padding
+  margin-right: -($grid-gutter-width/2); // remove first and last element outside padding
+}
+
+.col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+@for $var from 1 through $grid-column-sum {
+  .col-#{$var} {
+    position: relative;
+    max-width: 100% * ($var / $grid-column-sum);
+    flex: 0 0 (100% * ($var / $grid-column-sum));
+    padding-left: $grid-gutter-width / 2;
+    padding-right: $grid-gutter-width / 2;
+  }
+}
